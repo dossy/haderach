@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>action</key>
+	<false/>
+	<key>category</key>
+	<string>SCRIPTS</string>
+	<key>command</key>
+	<string>read -r verb n m &lt;&lt;&lt; {query}
+case $verb in
+paragraph|paragraphs|title) ;;
+*) verb=paragraph; read -r n m &lt;&lt;&lt; {query}; [ -n "$m" ] &amp;&amp; verb="${verb}s" ;;
+esac
+
+url="http://kwisatz.hadera.ch/$verb"
+
+[ -n "$n" ] &amp;&amp; url="$url/$n"
+[ -n "$m" ] &amp;&amp; url="$url/$m"
+
+curl -s ${url}.text | pbcopy</string>
+	<key>disabled</key>
+	<false/>
+	<key>escapequery</key>
+	<true/>
+	<key>escapequerybackquotes</key>
+	<true/>
+	<key>escapequerybrackets</key>
+	<true/>
+	<key>escapequeryquotes</key>
+	<true/>
+	<key>escapequerysemicolons</key>
+	<true/>
+	<key>growloutput</key>
+	<false/>
+	<key>growloutputsticky</key>
+	<false/>
+	<key>keyword</key>
+	<string>kwisatz</string>
+	<key>logging</key>
+	<false/>
+	<key>parameter</key>
+	<integer>0</integer>
+	<key>silent</key>
+	<true/>
+	<key>subtitle</key>
+	<string>Kwisatz Haderach, the &lt;s&gt;voice&lt;/s&gt; placeholder text from the Outer World!</string>
+	<key>title</key>
+	<string>kwisatz.hadera.ch</string>
+</dict>
+</plist>
